@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - /home/tungnn/.config/gcloud/legacy_credentials/tungnguyenngoc@zigexn.vn/adc.json:/app/gcp-credentials.json
+    env_file:
+      - .env
+    environment:
+      - SAMPLE_SIZE=50000
+      - PROGRESS=10000

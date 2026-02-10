@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Chạy công cụ so sánh mmdb với Gemfile của tool (độc lập app Rails).
+# Cách dùng: từ thư mục tools/compare-geolite2-monthly chạy: ./bin/run
+# Hoặc từ repo root: tools/compare-geolite2-monthly/bin/run
+
+set -e
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TOOL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$TOOL_DIR"
+
+if ! bundle check &>/dev/null; then
+  echo "Chạy bundle install trong $TOOL_DIR ..."
+  bundle install
+fi
+
+exec bundle exec ruby compare_mmdb.rb "$@"
