@@ -9,5 +9,4 @@ services:
     env_file:
       - .env
     environment:
-      - SAMPLE_SIZE=50000
-      - PROGRESS=10000
+      - SAMPLE_SIZE=500000
